@@ -14,10 +14,11 @@ if file is None:
     st.text("Please upload an image file")
 else:
     image = Image.open(file)
-    st.image(image, use_column_width=True)
+    
     image1 = PILImage.create(file)
     
     pred,pred_idx,probs = model.predict(image1)
     prob = np.array2string(probs[pred_idx].numpy())
     
     st.write("This is a " + pred + ". Accuracy: " + prob)
+    st.image(image, use_column_width=True)
